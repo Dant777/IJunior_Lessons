@@ -1,18 +1,26 @@
+using Assets.Scripts.Game01;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Alarm : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool IsEnabled { get; private set; }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.TryGetComponent<Criminal>(out Criminal criminal))
+        {
+            IsEnabled = true;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerExit2D(Collider2D collision)
     {
-        
+        if (collision.TryGetComponent<Criminal>(out Criminal criminal))
+        {
+            IsEnabled = false;
+        }
     }
 }
