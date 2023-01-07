@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Net;
 using UnityEngine;
 
 public class AlarmPlayer : MonoBehaviour
@@ -36,10 +33,10 @@ public class AlarmPlayer : MonoBehaviour
             {
                 _audio.volume = Mathf.MoveTowards(_audio.volume, _minVolume, _stepVolume);
                 Debug.Log(_audio.volume);
+
                 if (_audio.volume == _minVolume)
                 {
                     _audio.Stop();
-                   
                 }
             }
         }
