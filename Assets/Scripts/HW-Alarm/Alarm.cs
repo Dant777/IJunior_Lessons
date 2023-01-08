@@ -3,16 +3,14 @@ using UnityEngine.Events;
 
 public class Alarm : MonoBehaviour
 {
-    [SerializeField] private UnityEvent _alarmTrigger;
-
-    public bool IsEnabled { get; private set; }
+    [SerializeField] private UnityEvent _soundUp;
+    [SerializeField] private UnityEvent _soundDown;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<Criminal>(out Criminal criminal))
         {
-            _alarmTrigger.Invoke();
-            IsEnabled = true;
+            _soundUp.Invoke();
         }
     }
 
@@ -20,8 +18,7 @@ public class Alarm : MonoBehaviour
     {
         if (collision.TryGetComponent<Criminal>(out Criminal criminal))
         {
-            _alarmTrigger.Invoke();
-            IsEnabled = false;
+            _soundDown.Invoke();
         }
     }
 }

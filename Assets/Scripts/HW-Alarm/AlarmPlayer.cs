@@ -18,28 +18,26 @@ public class AlarmPlayer : MonoBehaviour
         _alarm = gameObject.GetComponent<Alarm>();
     }
 
-    public void PlaySound()
+    public void TurnUpSound()
     {
-        if (_alarm.IsEnabled == true)
+        if (_turnDownVolumeJob != null)
         {
-            if (_turnUpVolumeJob != null)
-            {
-                Debug.Log("StopCoroutine(_turnUpVolumeJob)");
-                StopCoroutine(_turnUpVolumeJob);
-            }
-
-            _turnDownVolumeJob = StartCoroutine(TurnDownVolume());
+            Debug.Log("StopCoroutine(_turnDownVolumeJob);");
+            StopCoroutine(_turnDownVolumeJob);
         }
-        else
+
+        _turnUpVolumeJob = StartCoroutine(TurnUpVolume());
+    }
+
+    public void TurnDownSound()
+    {
+        if (_turnUpVolumeJob != null)
         {
-            if (_turnDownVolumeJob != null)
-            {
-                Debug.Log("StopCoroutine(_turnDownVolumeJob);");
-                StopCoroutine(_turnDownVolumeJob);
-            }
-
-            _turnUpVolumeJob = StartCoroutine(TurnUpVolume());
+            Debug.Log("StopCoroutine(_turnUpVolumeJob)");
+            StopCoroutine(_turnUpVolumeJob);
         }
+
+        _turnDownVolumeJob = StartCoroutine(TurnDownVolume());
     }
 
     private IEnumerator TurnUpVolume()
