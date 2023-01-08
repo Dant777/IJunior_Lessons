@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         _animator.SetFloat(Speed, _idleSpeed);
