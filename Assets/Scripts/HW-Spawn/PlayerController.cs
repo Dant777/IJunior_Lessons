@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
 
     private Animator _animator;
     private float _idleSpeed = 0;
-   
+    private Vector3 targetVector;
+
     private void Start()
     {
         _animator = GetComponent<Animator>();
@@ -19,17 +20,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         _animator.SetFloat(Speed, _idleSpeed);
-
-        if (Input.GetKey(KeyCode.A) == true)
-        {
-            _animator.SetFloat(Speed, _speed);
-            transform.Translate(-_speed * Time.deltaTime, 0, 0);    
-        }
-
-        if (Input.GetKey(KeyCode.D) == true)
-        {
-            _animator.SetFloat(Speed, _speed);
-            transform.Translate(_speed * Time.deltaTime, 0, 0);
-        }
+        _animator.SetFloat(Speed, _speed);
+        targetVector = transform.position + transform.right;
+        transform.position = Vector3.MoveTowards(transform.position, targetVector, _speed);
     }
 }
