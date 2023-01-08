@@ -22,7 +22,6 @@ public class AlarmPlayer : MonoBehaviour
     {
         if (_turnDownVolumeJob != null)
         {
-            Debug.Log("StopCoroutine(_turnDownVolumeJob);");
             StopCoroutine(_turnDownVolumeJob);
         }
 
@@ -33,7 +32,6 @@ public class AlarmPlayer : MonoBehaviour
     {
         if (_turnUpVolumeJob != null)
         {
-            Debug.Log("StopCoroutine(_turnUpVolumeJob)");
             StopCoroutine(_turnUpVolumeJob);
         }
 
