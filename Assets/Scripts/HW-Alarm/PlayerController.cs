@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    private Animator _animator;
+    private const string Speed = "Speed";
+
     [SerializeField] private float _speed;
+
+    private Animator _animator;
     private float _idleSpeed = 0;
    
     private void Start()
@@ -16,20 +19,18 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _animator.SetFloat("Speed", _idleSpeed);
+        _animator.SetFloat(Speed, _idleSpeed);
 
         if (Input.GetKey(KeyCode.A) == true)
         {
-            _animator.SetFloat("Speed", _speed);
+            _animator.SetFloat(Speed, _speed);
             transform.Translate(-_speed * Time.deltaTime, 0, 0);    
         }
 
         if (Input.GetKey(KeyCode.D) == true)
         {
-            _animator.SetFloat("Speed", _speed);
+            _animator.SetFloat(Speed, _speed);
             transform.Translate(_speed * Time.deltaTime, 0, 0);
         }
-
-        
     }
 }
