@@ -5,41 +5,40 @@ using UnityEngine;
 public class AlarmPlayer : MonoBehaviour
 {
     [SerializeField] private AudioSource _audio;
+    [SerializeField] private float _stepVolume;
 
     private float _minVolume = 0f;
     private float _maxVolume = 1f;
-    private float _volumeCounter = 1000f;
-    private float _stepVolume;
     private Alarm _alarm;
+    private Coroutine _turnUpVolumeJob = null;
+    private Coroutine _turnDownVolumeJob = null;
 
     private void Start()
     {
-        _stepVolume = 1 / _volumeCounter;
         _alarm = gameObject.GetComponent<Alarm>();
     }
 
     public void PlaySound()
     {
-        Coroutine turnUpVolumeJob = null;
-        Coroutine turnDownVolumeJob = null;
-
         if (_alarm.IsEnabled == true)
         {
-            if (turnUpVolumeJob != null)
+            if (_turnUpVolumeJob != null)
             {
-                StopCoroutine(turnUpVolumeJob);
+                Debug.Log("StopCoroutine(_turnUpVolumeJob)");
+                StopCoroutine(_turnUpVolumeJob);
             }
 
-            turnDownVolumeJob = StartCoroutine(TurnDownVolume());
+            _turnDownVolumeJob = StartCoroutine(TurnDownVolume());
         }
         else
         {
-            if (turnDownVolumeJob != null)
+            if (_turnDownVolumeJob != null)
             {
-                StopCoroutine(turnDownVolumeJob);
+                Debug.Log("StopCoroutine(_turnDownVolumeJob);");
+                StopCoroutine(_turnDownVolumeJob);
             }
 
-            turnUpVolumeJob = StartCoroutine(TurnUpVolume());
+            _turnUpVolumeJob = StartCoroutine(TurnUpVolume());
         }
     }
 
@@ -51,10 +50,9 @@ public class AlarmPlayer : MonoBehaviour
             _audio.Play();
         }
 
-        for (int i = 0; i < _volumeCounter; i++)
+        while (_audio.volume < _maxVolume)
         {
-            _audio.volume = Mathf.MoveTowards(_audio.volume, _maxVolume, _stepVolume);
-            Debug.Log(_audio.volume);
+            _audio.volume = Mathf.MoveTowards(_audio.volume, _maxVolume, _stepVolume * Time.deltaTime);
 
             yield return null;
         }
@@ -62,14 +60,14 @@ public class AlarmPlayer : MonoBehaviour
 
     private IEnumerator TurnDownVolume()
     {
-        for (int i = 0; i < _volumeCounter; i++)
+        while (_audio.volume > _minVolume)
         {
-            _audio.volume = Mathf.MoveTowards(_audio.volume, _minVolume, _stepVolume);
-            Debug.Log(_audio.volume);
+            _audio.volume = Mathf.MoveTowards(_audio.volume, _minVolume, _stepVolume * Time.deltaTime);
 
             yield return null;
         }
 
         _audio.Stop();
+        Debug.Log("_audio.Stop()");
     }
 }
