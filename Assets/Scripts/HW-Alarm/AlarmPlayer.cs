@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Alarm))]
 public class AlarmPlayer : MonoBehaviour
 {
     [SerializeField] private AudioSource _audio;
@@ -9,7 +10,7 @@ public class AlarmPlayer : MonoBehaviour
     private float _stepVolume = 0.0002f;
     private Alarm _alarm;
 
-    private void OnEnable()
+    private void Awake()
     {
         _alarm = gameObject.GetComponent<Alarm>();
     }
