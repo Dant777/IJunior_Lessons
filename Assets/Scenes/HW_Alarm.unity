@@ -1859,12 +1859,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4fc580bcc885b444bae41b9793f26a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _alarmTrigger:
+  _soundUp:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1228721845}
         m_TargetAssemblyTypeName: AlarmPlayer, Assembly-CSharp
-        m_MethodName: PlaySound
+        m_MethodName: TurnUpSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _soundDown:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1228721845}
+        m_TargetAssemblyTypeName: AlarmPlayer, Assembly-CSharp
+        m_MethodName: TurnDownSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
