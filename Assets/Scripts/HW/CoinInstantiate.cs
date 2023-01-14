@@ -29,7 +29,6 @@ public class CoinInstantiate : MonoBehaviour
 
         if (_timeCounter >= _respawnTime)
         {
-            Debug.Log($"{_timeCounter} респ, index {gameObject.name}");
             _newGameObject = Instantiate(_respawnObject, transform.position, transform.rotation);
             _timeCounter = 0f;
         }

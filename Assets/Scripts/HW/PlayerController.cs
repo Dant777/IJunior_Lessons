@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
             angle,
             Vector2.down * deltaSize, distanse,
             _platformLayerMask);
-        Debug.Log(raycastHit2D.collider);
         return raycastHit2D.collider != null;
     }
 }
