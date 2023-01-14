@@ -7,7 +7,7 @@ public class DeleteCriminal : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.TryGetComponent(out Criminal criminal))
+        if (collider.TryGetComponent(out Enemy criminal))
         {
             Destroy(criminal.gameObject);
         }
