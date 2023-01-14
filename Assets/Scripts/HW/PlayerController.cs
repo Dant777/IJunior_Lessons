@@ -11,15 +11,18 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
+    [SerializeField] private LayerMask _platformLayerMask;
 
     private Animator _animator;
     private float _idleSpeed = 0;
     private Rigidbody2D _rigidbody2D;
+    private BoxCollider2D _boxCollider2D;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
         _rigidbody2D = transform.GetComponent<Rigidbody2D>();
+        _boxCollider2D = transform.GetComponent<BoxCollider2D>();
     }
 
     void Update()
@@ -38,10 +41,24 @@ public class PlayerController : MonoBehaviour
             transform.Translate(_speed * Time.deltaTime, 0, 0);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) == true)
+        if (IsGrounded() == true && (Input.GetKeyDown(KeyCode.Space) == true))
         {
             _rigidbody2D.velocity = Vector2.up * _jumpForce;
-            Debug.Log("Jump");
         }
+    }
+
+    private bool IsGrounded()
+    {
+        float angle = 0f;
+        float deltaSize = 0.1f;
+        float distanse = 0.1f;
+        var raycastHit2D = Physics2D.BoxCast(
+            _boxCollider2D.bounds.center,
+            _boxCollider2D.bounds.size,
+            angle,
+            Vector2.down * deltaSize, distanse,
+            _platformLayerMask);
+        Debug.Log(raycastHit2D.collider);
+        return raycastHit2D.collider != null;
     }
 }

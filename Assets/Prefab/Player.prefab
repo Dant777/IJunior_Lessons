@@ -171,7 +171,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3
-  _jumpForce: 10
+  _jumpForce: 15
+  _platformLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &6283293971633332919
 MonoBehaviour:
   m_ObjectHideFlags: 0
