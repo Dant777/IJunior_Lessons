@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8379277104957390400}
   - component: {fileID: 8612577912135101334}
   - component: {fileID: 4420121211186053990}
+  - component: {fileID: 6604478323469642192}
+  - component: {fileID: 3438290425105290365}
   m_Layer: 0
   m_Name: coinGold
   m_TagString: Untagged
@@ -111,3 +113,42 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.37900734, y: 0.36530638}
   m_EdgeRadius: 0
+--- !u!114 &6604478323469642192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7770366772064660656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0debea767ab20cb41b4cba0197202d65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touch:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3438290425105290365}
+        m_TargetAssemblyTypeName: CoinTrigger, Assembly-CSharp
+        m_MethodName: Delete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+--- !u!114 &3438290425105290365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7770366772064660656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df52de82fed83e9489b384ecabb6cbbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
