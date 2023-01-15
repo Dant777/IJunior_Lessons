@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
         _boxCollider2D = transform.GetComponent<BoxCollider2D>();
     }
 
-    void Update()
+    private void Update()
     {
         _animator.SetFloat(Speed, _idleSpeed);
 

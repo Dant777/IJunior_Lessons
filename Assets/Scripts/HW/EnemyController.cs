@@ -8,11 +8,11 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private float _speed;
 
-    private Vector3 targetVector;
+    private Vector3 _targetVector;
 
-    void Update()
+    private void Update()
     {
-        targetVector = transform.position + transform.right;
-        transform.position = Vector3.MoveTowards(transform.position, targetVector, _speed * Time.deltaTime);
+        _targetVector = transform.position + transform.right;
+        transform.position = Vector3.MoveTowards(transform.position, _targetVector, _speed * Time.deltaTime);
     }
 }
