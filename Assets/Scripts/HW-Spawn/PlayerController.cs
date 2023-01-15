@@ -11,18 +11,18 @@ public class PlayerController : MonoBehaviour
 
     private Animator _animator;
     private float _idleSpeed = 0;
-    private Vector3 targetVector;
+    private Vector3 _targetVector;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
     }
 
-    void Update()
+    private void Update()
     {
         _animator.SetFloat(Speed, _idleSpeed);
         _animator.SetFloat(Speed, _speed);
-        targetVector = transform.position + transform.right;
-        transform.position = Vector3.MoveTowards(transform.position, targetVector, _speed * Time.deltaTime);
+        _targetVector = transform.position + transform.right;
+        transform.position = Vector3.MoveTowards(transform.position, _targetVector, _speed * Time.deltaTime);
     }
 }
