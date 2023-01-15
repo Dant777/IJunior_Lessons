@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5659890fda567824f890665c04e03b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _respawnObject: {fileID: 7770366772064660656, guid: f0853392972bd2246ba0db21e3aeb52e, type: 3}
+  _template: {fileID: 6604478323469642192, guid: f0853392972bd2246ba0db21e3aeb52e, type: 3}
   _respawnTime: 2
 --- !u!82 &6051310226339412931
 AudioSource:
